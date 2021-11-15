@@ -1,0 +1,23 @@
+<view class="Vtu_CheckBoxGroup v-class is-{{direction}}">
+  <slot />
+  <view
+    class="Vtu_CheckBoxGroup_CheckBox {{item.disabled?'is-disabled':''}} {{item.checked ? 'is-active' : ''}} checkbox-class"
+    tt:for="{{checkboxList}}" tt:key="index" hover-class="{{item.disabled?'':'Vtu_CheckBoxGroup_CheckBox_Hover'}}"
+    bindtap="{{item.disabled?'':'checkboxChange'}}"
+    style="color: {{item.checked ?activeColor:''}}; width: {{direction==='horizontal'?(100/horizontalNumber)+'%':''}}"
+    data-value="{{item.value}}">
+    <block tt:if="{{align == 'left'}}">
+      <view
+        class="Vtu_CheckBoxGroup_CheckBox_CheckBoxIcon checkbox-icon-class {{item.checked ? 'is-active ' + activeCheckboxIcon : checkboxIcon}}"
+        style="color: {{item.checked ? activeCheckboxColor||activeColor : checkboxColor}};" />
+      <view class="Vtu_CheckBoxGroup_CheckBox_Label label-class">{{item.label}}</view>
+    </block>
+    <block tt:elif="{{align == 'right'}}">
+      <view class="Vtu_CheckBoxGroup_CheckBox_Icon {{item.icon}} icon-class" tt:if="{{item.icon}}" />
+      <view class="Vtu_CheckBoxGroup_CheckBox_Label label-class">{{item.label}}</view>
+      <view
+        class="Vtu_CheckBoxGroup_CheckBox_CheckBoxIcon checkbox-icon-class {{item.checked ? 'is-active ' + activeCheckboxIcon : checkboxIcon}}"
+        style="color: {{item.checked ? activeCheckboxColor||activeColor : checkboxColor}};" />
+    </block>
+  </view>
+</view>

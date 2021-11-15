@@ -1,0 +1,13 @@
+<view class="Vtu_Toast v-class">
+  <view class="Vtu_Toast_Mask mask-class" animation="{{maskAnimation}}" bindtap="{{closeOnClickOverlay?'closeToast':''}}"/>
+  <view class="Vtu_Toast_Center center-class {{type?'':'is-label'}}" animation="{{centerAnimation}}">
+    <view class="Vtu_Toast_Center_Icon" tt:if="{{type == 'success' || type == 'error' || type == 'warning' || type == 'loading' || type == 'default'}}">
+      <view class="icon vtu-icon vtu-icon-xuanze1" tt:if="{{type == 'success'}}"/>
+      <view class="icon vtu-icon vtu-icon-guanbi1" tt:if="{{type == 'error'}}"/>
+      <view class="icon vtu-icon vtu-icon-jinggao" tt:if="{{type == 'warning'}}"/>
+      <view class="icon vtu-icon vtu-icon-jiazai loading" tt:if="{{type == 'loading'}}"/>
+      <view class="icon {{icon}} {{rotate?'is-rotate':''}}" tt:if="{{type == 'default'}}"/>
+    </view>
+    <view class="Vtu_Toast_Center_label" tt:if="{{title}}">{{title}}</view>
+  </view>
+</view>

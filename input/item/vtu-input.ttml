@@ -1,0 +1,38 @@
+<view class="Vtuzx_Input v-class {{border?'is-border':''}} {{round?'is-round':''}}" slot="{{slot}}" bindtap="bindClick" disabled="{{disabled}}" hover-class="{{arrow?'Vtuzx_Input_Hover':''}}">
+  <view class="Vtuzx_Input_Top {{panelHeader?'is-header':''}} {{type == 'textarea'?'is-textarea':''}} {{disabled?'is-disabled':''}} ">
+    <view class="Vtuzx_Input_Top_Must"><i class="vtu-icon vtu-icon-bixutian" tt:if="{{must}}"/></view>
+    <view class="Vtuzx_Input_Top_Icon {{icon}}" style="color: {{iconColor}}" tt:if="{{icon}}"/>
+    <view class="Vtuzx_Input_Top_Title title-class" style="color: {{titleColor}};text-align: {{titleAlign}};" tt:if="{{title}}">{{title}}</view>
+    <view class="Vtuzx_Input_Top_Value" style="color: {{valueColor}}" tt:if="{{type == 'default'}}">{{value||''}}</view>
+    <view class="Vtuzx_Input_Top_Value" tt:elif="{{type == 'input'}}">
+      <input value="{{value}}" focus="{{focus}}" id="{{id}}" name="{{name}}" class="input-class {{status}}" placeholder-class="placeholder" placeholder="{{placeholder}}" cursor-spacing="{{cursorSpacing}}" bindinput="bindinput" bindconfirm="bindconfirm" bindblur="bindblur" bindfocus="bindfocus" bindkeyboardheightchange="bindkeyboardheightchange" disabled="{{disabled}}" maxlength="{{maxlength}}" confirm-type="{{confirmType}}" confirm-hold="{{confirmHold}}" adjust-position="{{adjustPosition}}" style="text-align: {{textAlign}};" type="{{inputType}}"/>
+      <view class="Vtuzx_Input_Message {{status}}" tt:if="{{(status == 'success' || status == 'warning' || status == 'error') && message}}"><text>{{message}}</text></view>
+    </view>
+    <view class="Vtuzx_Input_Top_Value" tt:elif="{{type == 'textarea'}}">
+      <textarea value="{{value}}" focus="{{focus}}" id="{{id}}" name="{{name}}" class="textarea-class {{status}}" placeholder-class="placeholder" style="text-align: {{textAlign}};height: {{textHeight}}" placeholder="{{placeholder}}" disabled="{{disabled}}" maxlength="{{maxlength}}" auto-height="{{autoHeight}}" show-confirm-bar="{{showConfirmBar}}" cursor-spacing="{{cursorSpacing}}" bindinput="bindinput" bindconfirm="bindconfirm" bindblur="bindblur" bindfocus="bindfocus" bindlinechange="bindlinechange"/>
+      <view class="Vtuzx_Input_Top_Value_MaxLabel" tt:if="{{maxlength && showMaxLabel}}"><font>{{value.length||0}}</font>/{{maxlength}}</view>
+    </view>
+    <view class="Vtuzx_Input_Top_Value" tt:elif="{{type == 'picker'}}">
+      <picker bindchange="bindchange" id="{{id}}" style="color: {{valueColor}};text-align: {{textAlign}};height: {{textHeight}}" name="{{name}}" bindcolumnchange="bindcolumnchange" mode="{{mode}}" value="{{value}}" range="{{range}}" start="{{start}}" end="{{end}}" range-key="{{rangeKey}}">
+        <block tt:if="{{mode == 'selector' && (value || value == 0)}}">{{rangeKey?range[value][rangeKey]:range[value]}}</block>
+        <block tt:elif="{{mode == 'time' && value}}">{{value}}</block>
+        <block tt:elif="{{mode == 'date' && value}}">{{value}}</block>
+        <block tt:elif="{{mode == 'region' && value && value.length > 0}}">{{value[0]}}，{{value[1]}}，{{value[2]}}</block>
+        <block tt:else>{{placeholder||'请选择'}}</block>
+      </picker>
+    </view>
+    <view class="Vtuzx_Input_Top_Value" tt:else/>
+    <view class="Vtuzx_Input_Top_Slot">
+      <slot name="after"/>
+    </view>
+    <view class="Vtuzx_Input_Top_Clear" tt:if="{{clearable && value}}" catchtap="bindclear">
+      <i class="vtu-icon vtu-icon-x"/>
+    </view>
+    <view class="Vtuzx_Input_Top_Status {{status}}" tt:if="{{status}}">
+      <i class="vtu-icon vtu-icon-RectangleCopy1" tt:if="{{status == 'success'}}"/>
+      <i class="vtu-icon vtu-icon-RectangleCopy2" tt:if="{{status == 'warning'}}"/>
+      <i class="vtu-icon vtu-icon-RectangleCopy" tt:if="{{status == 'error'}}"/>
+    </view>
+    <view class="Vtuzx_Input_Top_Arrow vtu-icon vtu-icon-right-copy" tt:if="{{arrow}}"/>
+  </view>
+</view>

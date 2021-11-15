@@ -1,0 +1,24 @@
+<view class="Vtu_RadioGroup v-class is-{{direction}}">
+  <!-- 2021.11.11添加slot -->
+  <slot />
+  <view
+    class="Vtu_RadioGroup_Radio {{item.disabled?'is-disabled':''}} {{model == item.value ? 'is-active' : ''}} radio-class"
+    tt:for="{{radioList}}" tt:key="index" hover-class="{{item.disabled?'':'Vtu_RadioGroup_Radio_Hover'}}"
+    bindtap="{{item.disabled?'':'radioChange'}}"
+    style="color: {{model == item.value ?activeColor:''}};width: {{direction==='horizontal'?(100/horizontalNumber)+'%':''}}"
+    data-value="{{item.value}}">
+    <block tt:if="{{align == 'left'}}">
+      <view
+        class="Vtu_RadioGroup_Radio_RadioIcon radio-icon-class {{model == item.value ? 'is-active ' + activeRadioIcon : radioIcon}}"
+        style="color: {{model == item.value ? activeRadioColor||activeColor : radioColor}};" />
+      <view class="Vtu_RadioGroup_Radio_Label label-class">{{item.label}}</view>
+    </block>
+    <block tt:elif="{{align == 'right'}}">
+      <view class="Vtu_RadioGroup_Radio_Icon {{item.icon}} icon-class" tt:if="{{item.icon}}" />
+      <view class="Vtu_RadioGroup_Radio_Label label-class">{{item.label}}</view>
+      <view
+        class="Vtu_RadioGroup_Radio_RadioIcon radio-icon-class {{model == item.value ? 'is-active ' + activeRadioIcon : radioIcon}}"
+        style="color: {{model == item.value ? activeRadioColor||activeColor : radioColor}};" />
+    </block>
+  </view>
+</view>
