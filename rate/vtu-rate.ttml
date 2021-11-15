@@ -1,3 +1,0 @@
-<view class="Vtu_Rate v-class" slot="{{slot}}">
-    <span class="Vtu_Rate_Li item-class {{index < value ? 'is-selected ' + activeIcon : icon }} {{disabled?'is-disabled':''}}" style="font-size: {{size}};color: {{(index < value)?activeColor:color}};" tt:for="{{newCount}}" tt:key="index" bindtap="{{readonly||disabled?'':'bindChange'}}" data-index="{{index}}"/>
-</view>

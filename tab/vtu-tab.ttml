@@ -1,3 +1,0 @@
-<view class="Vtu_Tab v-class" tt:if="{{show}}">
-    <slot/>
-</view>

@@ -1,6 +1,0 @@
-@import "../../assets/css/Vtu_Common.ttss";
-.Vtu_Layout-Row{
-    box-sizing: border-box;
-    position: relative;
-}
-.Vtu_Layout-Col{}

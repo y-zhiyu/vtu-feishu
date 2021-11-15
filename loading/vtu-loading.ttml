@@ -1,9 +1,0 @@
-<view class="Vtu_Loading {{round?'is-round':''}} {{fill?'is-fill':''}} {{fillScreen?'is-fillScreen':''}} v-class" tt:if="{{show}}" style="background: {{bgColor}};height: {{height}}">
-    <view class="Vtu_Loading_Center">
-        <view class="Vtu_Loading_Img" tt:if="{{img}}">
-            <image src="{{img}}" mode="{{mode}}" class="img-class"/>
-        </view>
-        <view class="Vtu_Loading_Icon {{icon}} icon-class {{rotate?'is-rotate':''}}" style="color: {{iconColor}}" tt:elif="{{icon}}"/>
-        <view class="Vtu_Loading_Label label-class" style="color: {{labelColor}}" tt:if="{{label}}">{{label}}</view>
-    </view>
-</view>
