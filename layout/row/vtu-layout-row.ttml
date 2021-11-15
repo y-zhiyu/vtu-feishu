@@ -1,0 +1,3 @@
+<view class="Vtu_Layout-Row v-class {{commonClass}}" style="text-align: {{align}};{{commonStyle}}">
+    <slot/>
+</view>

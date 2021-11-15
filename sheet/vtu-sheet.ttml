@@ -1,0 +1,18 @@
+<view class="Vtu_Sheet v-class">
+    <view class="Vtu_Sheet_Mask" animation="{{maskAnimation}}" hidden="{{!showOverlay}}" bindtap="{{closeOnClickOverlay?'closeByMask':''}}"/>
+    <view class="Vtu_Sheet_Center" animation="{{centerAnimation}}">
+        <view class="Vtu_Sheet_Center_List sheet-class">
+            <button tt:for="{{sheetList}}" tt:key="index" open-type="{{item.openType}}" session-from="{{item.sessionFrom}}" send-message-title="{{item.sendMessageTitle}}" send-message-path="{{item.sendMessagePath}}" send-message-img="{{item.sendMessageImg}}" app-parameter="{{item.appParameter}}" show-message-card="{{item.showMessageCard}}" bindgetuserinfo="getUserInfo" bindgetphonenumber="getPhoneNumber" bindcontact="contact" binderror="error" bindopensetting="opensetting" bindlaunchapp="launchapp" bindtap="{{item.openType||item.loading||item.disabled?'':'onSelect'}}" data-index="{{index}}" data-item="{{item}}" class="Vtu_Sheet_Center_Li {{item.disabled?'is-disabled':''}} {{item.desc?'is-desc':''}} sheet-ok-class" hover-class="{{item.loading || item.disabled ? '' : 'Vtu_Sheet_Center_Li_Hover'}}">
+                <i class="Vtu_Sheet_Center_Li_Loading iconfont icon-jiazai" tt:if="{{item.loading}}"/>
+                <block tt:else>
+                    <view class="Vtu_Sheet_Center_Li_H1" style="color: {{item.disabled?'':item.color}};">
+                        <i class="{{item.icon}} Vtu_Sheet_Center_Li_H1_Icon" tt:if="{{item.icon}}"/>
+                        <font>{{item.label}}</font>
+                    </view>
+                    <view class="Vtu_Sheet_Center_Li_H2" tt:if="{{item.desc}}">{{item.desc}}</view>
+                </block>
+            </button>
+        </view>
+        <view class="Vtu_Sheet_Center_Li Cancel sheet-cancel-class" hover-class="Vtu_Sheet_Center_Li_Hover" bindtap="closeByCancel" tt:if="{{showCancel}}">{{cancelLabel}}</view>
+    </view>
+</view>
